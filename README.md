@@ -1,0 +1,2 @@
+# adatbazis
+ SQL, feladatok, megoldások

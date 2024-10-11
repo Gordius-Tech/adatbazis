@@ -1,0 +1,16 @@
+1. SELECT `fovaros`,`orszag` FROM `orszagok` WHERE `orszag`='MADAGASZKÁR'
+2. SELECT `orszag`,`fovaros` FROM `orszagok` WHERE `fovaros`='OUAGADOUGOU'
+3. SELECT `orszag`, `autojel` FROM `orszagok` WHERE `autojel`='TT'
+4. SELECT `orszag`,`penzjel` FROM `orszagok` WHERE `penzjel`='SGD'
+5. SELECT `orszag`, `telefon` FROM `orszagok` WHERE `telefon`='61'
+6. SELECT `orszag`,`terulet` FROM `orszagok` WHERE `orszag`='Monaco'
+7. SELECT `nepesseg`*1000 FROM `orszagok` WHERE `orszag`='Málta'
+8. SELECT (`nepesseg`*1000)/`terulet` AS `nepsuruseg` FROM `orszagok` WHERE `orszag`='Japán'
+9. SELECT SUM(`nepesseg`)*1000 AS `ossznepesseg` FROM `orszagok`
+10. SELECT SUM(`terulet`) AS `osszterulet` FROM `orszagok`
+11. SELECT AVG(`nepesseg`)*1000 AS `átlagnép` FROM `orszagok`
+12. SELECT AVG(`terulet`) AS `átlagterület` FROM `orszagok`
+13. SELECT SUM(`nepesseg`)*1000 / SUM(`terulet`) AS `földnépsűrűség` FROM `orszagok`
+14. SELECT COUNT(*) AS `nagyországok száma` FROM `orszagok` WHERE `terulet`>1000000
+15. SELECT COUNT(*) AS `kisországok száma` FROM `orszagok` WHERE `terulet`<100
+16. SELECT COUNT(*) `kisnépességű országok száma` FROM `orszagok` WHERE `nepesseg`*1000 < 20000
