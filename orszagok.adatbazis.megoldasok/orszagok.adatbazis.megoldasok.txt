@@ -14,3 +14,6 @@
 14. SELECT COUNT(*) AS `nagyországok száma` FROM `orszagok` WHERE `terulet`>1000000
 15. SELECT COUNT(*) AS `kisországok száma` FROM `orszagok` WHERE `terulet`<100
 16. SELECT COUNT(*) `kisnépességű országok száma` FROM `orszagok` WHERE `nepesseg`*1000 < 20000
+17. SELECT COUNT(*) AS `országok száma` FROM `orszagok` WHERE `terulet`<100 OR `nepesseg`*1000<20000
+18. SELECT COUNT(*) AS `országok száma` FROM `orszagok` WHERE `terulet` BETWEEN 50000 AND 150000
+
