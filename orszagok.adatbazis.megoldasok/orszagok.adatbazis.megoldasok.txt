@@ -16,4 +16,8 @@
 16. SELECT COUNT(*) `kisnépességű országok száma` FROM `orszagok` WHERE `nepesseg`*1000 < 20000
 17. SELECT COUNT(*) AS `országok száma` FROM `orszagok` WHERE `terulet`<100 OR `nepesseg`*1000<20000
 18. SELECT COUNT(*) AS `országok száma` FROM `orszagok` WHERE `terulet` BETWEEN 50000 AND 150000
-
+19. SELECT COUNT(*) as `országok száma` FROM `orszagok` WHERE `nepesseg`*1000 BETWEEN 8000000 AND 12000000
+20. SELECT `fovaros` FROM `orszagok` WHERE `nep_fovaros`*1000 >20000000
+21. SELECT `orszag` FROM `orszagok` WHERE `nepesseg`/`terulet`*1000 >500
+22. SELECT COUNT(*) AS `országok száma` FROM `orszagok` WHERE `allamforma` LIKE '%köztársaság%'
+23. SELECT `orszag` FROM `orszagok` WHERE `penznem`='kelet-karib dollár'
