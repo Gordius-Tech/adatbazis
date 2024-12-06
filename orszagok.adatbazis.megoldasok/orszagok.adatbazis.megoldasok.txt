@@ -36,3 +36,5 @@
 36. SELECT COUNT(*) AS `Kis országok száma` FROM `orszagok` WHERE `terulet`< (SELECT `terulet` FROM `orszagok` WHERE`orszag`='Magyarország')
 37. SELECT `orszag`, `terulet` FROM `orszagok` ORDER BY `terulet` DESC LIMIT 1  vagy  SELECT `orszag`,`terulet` FROM `orszagok` WHERE `terulet`= (SELECT MAX(`terulet`) FROM `orszagok`);
 38. SELECT `orszag`, `terulet` FROM `orszagok` ORDER BY `terulet` ASC LIMIT 1  VAGY	SELECT `orszag`,`terulet` FROM `orszagok` WHERE `terulet`= (SELECT MIN(`terulet`) FROM `orszagok`);
+39. SELECT `orszag`, `nepesseg` FROM `orszagok` WHERE `nepesseg` = (SELECT MAX(`nepesseg`) FROM `orszagok`) vagy SELECT `orszag`, `nepesseg` FROM `orszagok` ORDER BY `nepesseg` DESC limit 1;
+40. 
