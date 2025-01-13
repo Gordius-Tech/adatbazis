@@ -295,11 +295,11 @@
     </div>
     <button class="accordion">47. Melyik tíz ország egy főre jutó GDP-je a legnagyobb?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT `orszag` FROM `orszagok` ORDER BY `gdp` DESC LIMIT 10;</p>
     </div>
     <button class="accordion">48. Melyik tíz ország össz-GDP-je a legnagyobb?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT `orszag`, `gdp`*`nepesseg` AS `összgdp` FROM `orszagok` ORDER BY `összgdp` DESC LIMIT 10;</p>
     </div>
     <button class="accordion">49. Melyik országban a legszegényebbek az emberek?</button>
     <div class="panel">
