@@ -50,3 +50,4 @@
 50. SELECT `orszag` FROM `orszagok` ORDER BY `terulet` ASC LIMIT 39,1;
 51. SELECT `orszag`, `nepesseg`/`terulet` AS `nepsuruseg` FROM `orszagok` ORDER BY `nepsuruseg` ASC LIMIT 14, 1;
 52. SELECT `orszag`, `nepesseg`/`terulet` AS `nepsuruseg` FROM `orszagok` ORDER BY `nepsuruseg` DESC LIMIT 60, 1;
+53. SELECT `orszag` FROM `orszagok` ORDER BY ABS(`terulet` - (SELECT `terulet` FROM `orszagok` WHERE `orszag` = 'Magyarország')) LIMIT 1, 3;
