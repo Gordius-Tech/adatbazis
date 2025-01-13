@@ -1,1 +1,380 @@
-hello
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladatok és Megoldások</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>A Föld Országainak Adatbázis Táblája</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="column-title">Mező</th>
+                <th class="column-title">Típus</th>
+                <th class="column-title">Leírás</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Id</td>
+                <td>N 11</td>
+                <td class="column-description">azonosító</td>
+            </tr>
+            <tr>
+                <td>Orszag</td>
+                <td>C 27</td>
+                <td class="column-description">az ország neve</td>
+            </tr>
+            <tr>
+                <td>Fovaros</td>
+                <td>C 19</td>
+                <td class="column-description">az ország fővárosa</td>
+            </tr>
+            <tr>
+                <td>Foldr_hely</td>
+                <td>C 50</td>
+                <td class="column-description">földrajzi elhelyezkedés</td>
+            </tr>
+            <tr>
+                <td>Terulet</td>
+                <td>N 11,2</td>
+                <td class="column-description">terület km2-ben</td>
+            </tr>
+            <tr>
+                <td>Allamforma</td>
+                <td>C 30</td>
+                <td class="column-description">államforma</td>
+            </tr>
+            <tr>
+                <td>Nepesseg</td>
+                <td>N 8</td>
+                <td class="column-description">népesség 1000 főben van megadva!</td>
+            </tr>
+            <tr>
+                <td>Nep_fovaros</td>
+                <td>N 8</td>
+                <td class="column-description">a főváros népessége 1000 főben van megadva!</td>
+            </tr>
+            <tr>
+                <td>Autojel</td>
+                <td>C 3</td>
+                <td class="column-description">autójel</td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>C 31</td>
+                <td class="column-description">országnév ékezetes írás nélkül, idegen elnevezésekkel is</td>
+            </tr>
+            <tr>
+                <td>Capital</td>
+                <td>C 19</td>
+                <td class="column-description">főváros ékezetes írás nélkül, idegen elnevezésekkel is</td>
+            </tr>
+            <tr>
+                <td>Penznem</td>
+                <td>C 20</td>
+                <td class="column-description">pénznem</td>
+            </tr>
+            <tr>
+                <td>Penzjel</td>
+                <td>C 3</td>
+                <td class="column-description">pénzjel</td>
+            </tr>
+            <tr>
+                <td>Valtopenz</td>
+                <td>C 18</td>
+                <td class="column-description">váltópénz a váltószámmal együtt</td>
+            </tr>
+            <tr>
+                <td>Telefon</td>
+                <td>N 3</td>
+                <td class="column-description">nemzetközi telefon-hívószám</td>
+            </tr>
+            <tr>
+                <td>GDP</td>
+                <td>N 5</td>
+                <td class="column-description">egy főre jutó bruttó hazai termék USA dollárban (GDP: gross domestic product)</td>
+            </tr>
+            <tr>
+                <td>Kat</td>
+                <td>N 1</td>
+                <td class="column-description">ismertségi kategória (1,2,3)</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Feladatok és Megoldások</h1>
+
+    <button class="accordion">1. Mi MADAGASZKÁR fővárosa? </button>
+    <div class="panel">
+        <p>SELECT `fovaros`,`orszag` FROM `orszagok` WHERE `orszag`='MADAGASZKÁR'</p>
+    </div>
+
+    <button class="accordion">2. Melyik ország fővárosa OUAGADOUGOU?</button>
+    <div class="panel">
+        <p>SELECT `orszag`,`fovaros` FROM `orszagok` WHERE `fovaros`='OUAGADOUGOU'</p>
+    </div>
+
+    <button class="accordion">3. Melyik ország autójele a TT?</button>
+    <div class="panel">
+        <p>SELECT `orszag`, `autojel` FROM `orszagok` WHERE `autojel`='TT'</p>
+    </div>
+    <button class="accordion">4. Melyik ország pénzének jele az SGD?</button>
+    <div class="panel">
+        <p>SELECT `orszag`,`penzjel` FROM `orszagok` WHERE `penzjel`='SGD'</p>
+    </div>
+    <button class="accordion">5. Melyik ország nemzetközi telefon-hívószáma a 61?</button>
+    <div class="panel">
+        <p>SELECT `orszag`, `telefon` FROM `orszagok` WHERE `telefon`='61'</p>
+    </div>
+    <button class="accordion">6. Mekkora területű Monaco?</button>
+    <div class="panel">
+        <p>SELECT `orszag`,`terulet` FROM `orszagok` WHERE `orszag`='Monaco'</p>
+    </div>
+    <button class="accordion">7. Hányan laknak Máltán?</button>
+    <div class="panel">
+        <p>SELECT `nepesseg`*1000 FROM `orszagok` WHERE `orszag`='Málta'</p>
+    </div>
+    <button class="accordion">8. Mennyi Japán népsűrűsége?</button>
+    <div class="panel">
+        <p>SELECT (`nepesseg`*1000)/`terulet` AS `nepsuruseg` FROM `orszagok` WHERE `orszag`='Japán'</p>
+    </div>
+    <button class="accordion">9. Hány lakosa van a Földnek? </button>
+    <div class="panel">
+        <p>SELECT SUM(`nepesseg`)*1000 AS `ossznepesseg` FROM `orszagok`</p>
+    </div>
+    <button class="accordion">10. Mennyi az országok területe összesen?</button>
+    <div class="panel">
+        <p>SELECT SUM(`terulet`) AS `osszterulet` FROM `orszagok`</p>
+    </div>
+    <button class="accordion">11. Mennyi az országok átlagos népessége? </button>
+    <div class="panel">
+        <p>SELECT AVG(`nepesseg`)*1000 AS `átlagnép` FROM `orszagok`</p>
+    </div>
+    <button class="accordion">12. Mennyi az országok átlagos területe?</button>
+    <div class="panel">
+        <p>SELECT AVG(`terulet`) AS `átlagterület` FROM `orszagok`</p>
+    </div>
+    <button class="accordion">13. Mennyi a Föld népsűrűsége? </button>
+    <div class="panel">
+        <p>SELECT SUM(`nepesseg`)*1000 / SUM(`terulet`) AS `földnépsűrűség` FROM `orszagok`</p>
+    </div>
+    <button class="accordion">14. Hány 1.000.000 km2-nél nagyobb területű ország van? </button>
+    <div class="panel">
+        <p>SELECT COUNT(*) AS `nagyországok száma` FROM `orszagok` WHERE `terulet`>1000000</p>
+    </div>
+    <button class="accordion">15. Hány 100 km2-nél kisebb területű ország van?</button>
+    <div class="panel">
+        <p>SELECT COUNT(*) AS `kisországok száma` FROM `orszagok` WHERE `terulet`<100</p>
+    </div>
+    <button class="accordion">16. Hány 20.000 főnél kevesebb lakosú ország van?</button>
+    <div class="panel">
+        <p>SELECT COUNT(*) `kisnépességű országok száma` FROM `orszagok` WHERE `nepesseg`*1000 < 20000</p>
+    </div>
+    <button class="accordion">17. Hány országra igaz, hogy területe kisebb 100 km2-nél, vagy pedig a lakossága kevesebb 20.000 főnél?</button>
+    <div class="panel">
+        <p>SELECT COUNT(*) AS `országok száma` FROM `orszagok` WHERE `terulet`<100 OR `nepesseg`*1000<20000</p>
+    </div>
+    <button class="accordion">18. Hány ország területe 50.000 és 150.000 km2 közötti? </button>
+    <div class="panel">
+        <p>SELECT COUNT(*) AS `országok száma` FROM `orszagok` WHERE `terulet` BETWEEN 50000 AND 150000</p>
+    </div>
+    <button class="accordion">19. Hány ország lakossága 8 és 12 millió közötti?</button>
+    <div class="panel">
+        <p>SELECT COUNT(*) as `országok száma` FROM `orszagok` WHERE `nepesseg`*1000 BETWEEN 8000000 AND 12000000</p>
+    </div>
+    <button class="accordion">20. Mely fővárosok népesebbek 20 millió főnél?</button>
+    <div class="panel">
+        <p>SELECT `fovaros` FROM `orszagok` WHERE `nep_fovaros`*1000 >20000000</p>
+    </div>
+    <button class="accordion">21. Mely országok népsűrűsége nagyobb 500 fő/km2-nél?</button>
+    <div class="panel">
+        <p>SELECT `orszag` FROM `orszagok` WHERE `nepesseg`/`terulet`*1000 >500</p>
+    </div>
+    <button class="accordion">22. Hány ország államformája köztársaság?</button>
+    <div class="panel">
+        <p>SELECT COUNT(*) AS `országok száma` FROM `orszagok` WHERE `allamforma` LIKE '%köztársaság%'</p>
+    </div>
+    <button class="accordion">23. Mely országok pénzneme a kelet-karib dollár?</button>
+    <div class="panel">
+        <p>SELECT `orszag` FROM `orszagok` WHERE `penznem`='kelet-karib dollár'</p>
+    </div>
+    <button class="accordion">24. Hány ország nevében van benne az "ORSZÁG" szó? </button>
+    <div class="panel">
+        <p>SELECT COUNT(*) FROM `orszagok` WHERE `orszag`LIKE '%orszag%'</p>
+    </div>
+    <button class="accordion">25. Mely országokban korona a hivatalos fizetőeszköz?</button>
+    <div class="panel">
+        <p>SELECT `orszag` FROM `orszagok` WHERE `penznem` LIKE '%korona%'</p>
+    </div>
+    <button class="accordion">26. Mennyi Európa területe?</button>
+    <div class="panel">
+        <p>SELECT SUM(`terulet`) AS 'Európa területe' FROM `orszagok` WHERE `foldr_hely` LIKE '%európa%'</p>
+    </div>
+    <button class="accordion">27. Mennyi Európa lakossága?</button>
+    <div class="panel">
+        <p>SELECT SUM(`nepesseg`)*1000 AS 'Európa népessége' FROM `orszagok` WHERE `foldr_hely` LIKE '%európa%'</p>
+    </div>
+    <button class="accordion">28. Mennyi Európa népsűrűsége?</button>
+    <div class="panel">
+        <p>SELECT SUM(`nepesseg`)/ SUM(`terulet`)*1000 FROM `orszagok` WHERE `foldr_hely` LIKE '%európa%'</p>
+    </div>
+    <button class="accordion">29. Hány ország van Afrikában?</button>
+    <div class="panel">
+        <p>SELECT COUNT(*) AS'afrikai osz' FROM `orszagok` WHERE `foldr_hely` LIKE '%afrika%'</p>
+    </div>
+    <button class="accordion">30. Mennyi Afrika lakossága?</button>
+    <div class="panel">
+        <p>SELECT SUM(`nepesseg`*1000) AS'afrikai osz' FROM `orszagok` WHERE `foldr_hely` LIKE '%afrika%'</p>
+    </div>
+    <button class="accordion">31. Mennyi Afrika népsűrűsége?</button>
+    <div class="panel">
+        <p>SELECT SUM(`nepesseg`)/ SUM(`terulet`)*1000 AS'neps' FROM `orszagok` WHERE `foldr_hely` LIKE '%afrika%'</p>
+    </div>
+    <button class="accordion">32. Melyek a szigetországok?</button>
+    <div class="panel">
+        <p>SELECT `orszag`, `foldr_hely`FROM `orszagok` WHERE (`foldr_hely` LIKE '%sziget%' OR `orszag` LIKE '%sziget%') AND (`foldr_hely` NOT LIKE '%félsziget%' AND `orszag` NOT LIKE '%félsziget%')</p>
+    </div>
+    <button class="accordion">33. Mely országok államformája hercegség, vagy királyság?</button>
+    <div class="panel">
+        <p>SELECT `orszag`,`allamforma` FROM `orszagok` WHERE `allamforma` LIKE '%hercegség%' OR `allamforma`LIKE '%királyság%';</p>
+    </div>
+    <button class="accordion">34. Hány országnak nincs autójelzése?</button>
+    <div class="panel">
+        <p>SELECT * FROM `orszagok` WHERE `autojel`=''</p>
+    </div>
+    <button class="accordion">35. Mennyi a váltószáma az aprópénznek azokban az országokban, ahol nem 100?</button>
+    <div class="panel">
+        <p>SELECT DISTINCT(REGEXP_REPLACE(`valtopenz`, '[^0-9]', '')) AS `valto` FROM orszagok WHERE REGEXP_REPLACE(`valtopenz`, '[^0-9]', '') != '100'</p>
+    </div>
+    <button class="accordion">36. Hány ország területe kisebb Magyarországénál? </button>
+    <div class="panel">
+        <p>SELECT COUNT(*) AS `Kis országok száma` FROM `orszagok` WHERE `terulet`< (SELECT `terulet` FROM `orszagok` WHERE`orszag`='Magyarország')</p>
+    </div>
+    <button class="accordion">37. Melyik a legnagyobb területű ország, és mennyi a területe? </button>
+    <div class="panel">
+        <p>SELECT `orszag`, `terulet` FROM `orszagok` ORDER BY `terulet` DESC LIMIT 1  vagy  SELECT `orszag`,`terulet` FROM `orszagok` WHERE `terulet`= (SELECT MAX(`terulet`) FROM `orszagok`);</p>
+    </div>
+    <button class="accordion">38. Melyik a legkisebb területű ország, és mennyi a területe?</button>
+    <div class="panel">
+        <p>SELECT `orszag`, `terulet` FROM `orszagok` ORDER BY `terulet` ASC LIMIT 1  VAGY	SELECT `orszag`,`terulet` FROM `orszagok` WHERE `terulet`= (SELECT MIN(`terulet`) FROM `orszagok`);</p>
+    </div>
+    <button class="accordion">39. Melyik a legnépesebb ország, és hány lakosa van?</button>
+    <div class="panel">
+        <p>SELECT `orszag`, `nepesseg` FROM `orszagok` WHERE `nepesseg` = (SELECT MAX(`nepesseg`) FROM `orszagok`) vagy SELECT `orszag`, `nepesseg` FROM `orszagok` ORDER BY `nepesseg` DESC limit 1;</p>
+    </div>
+    <button class="accordion">40. Melyik a legkisebb népességű ország, és hány lakosa van?</button>
+    <div class="panel">
+        <p>SELECT `orszag`, `nepesseg` FROM `orszagok` ORDER BY `nepesseg` ASC LIMIT 1; vagy SELECT `orszag`, `nepesseg` FROM `orszagok` WHERE `nepesseg`=(SELECT MIN(`nepesseg`) FROM `orszagok`);</p>
+    </div>
+    <button class="accordion">41. Melyik a legsűrűbben lakott ország, és mennyi a népsűrűsége?</button>
+    <div class="panel">
+        <p>SELECT `orszag`, (`nepesseg`*1000)/`terulet` AS `népsűrűség` FROM `orszagok` ORDER BY `népsűrűség` DESC LIMIT 1; vagy SELECT `orszag`, (`nepesseg`*1000)/`terulet` AS `népsűrűség` FROM `orszagok` WHERE (`nepesseg`*1000)/`terulet` = (SELECT MAX((`nepesseg`*1000)/`terulet`) FROM `orszagok`);</p>
+    </div>
+    <button class="accordion">42. Melyik a legritkábban lakott ország, és mennyi a népsűrűsége?</button>
+    <div class="panel">
+        <p>SELECT `orszag`, (`nepesseg`*1000)/`terulet` AS `népsűrűség` FROM `orszagok` ORDER BY `népsűrűség` ASC LIMIT 1 vagy SELECT `orszag`, (`nepesseg`*1000)/`terulet` AS `népsűrűség` FROM `orszagok` WHERE (`nepesseg`*1000)/`terulet` = (SELECT MIN((`nepesseg`*1000)/`terulet`) FROM `orszagok`);</p>
+    </div>
+    <button class="accordion">43. Melyik a legnagyobb afrikai ország és mekkora?</button>
+    <div class="panel">
+        <p>SELECT `orszag`,`terulet` FROM `orszagok` WHERE `foldr_hely` LIKE '%afrika%' ORDER BY `terulet` DESC LIMIT 1; vagy SELECT `orszag`,`terulet` FROM `orszagok` WHERE `foldr_hely` LIKE '%afrika%'  AND `terulet` = (SELECT MAX(`terulet`) FROM `orszagok` WHERE `foldr_hely` LIKE '%afrika%');</p>
+    </div>
+    <button class="accordion">44. Melyik a legkisebb amerikai ország és hányan lakják?</button>
+    <div class="panel">
+        <p>SELECT `orszag`, `nepesseg` FROM `orszagok` WHERE `foldr_hely` LIKE '%amerika%' ORDER BY `terulet` ASC LIMIT 1; vagy SELECT `orszag`,`nepesseg` FROM `orszagok` WHERE `foldr_hely` LIKE '%amerika%' AND `terulet` = (SELECT MIN(`terulet`) FROM `orszagok` WHERE `foldr_hely` LIKE '%amerika%');</p>
+    </div>
+    <button class="accordion">45. Melyik az első három legsűrűbben lakott "országméretű" ország (tehát nem város- vagy törpeállam)? </button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">46. Melyik a világ hat legnépesebb fővárosa?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">47. Melyik tíz ország egy főre jutó GDP-je a legnagyobb?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">48. Melyik tíz ország össz-GDP-je a legnagyobb?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">49. Melyik országban a legszegényebbek az emberek?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">50. Melyik a 40. legkisebb területű ország? </button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">51. Melyik a 15. legkisebb népsűrűségű ország?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">52. Melyik a 61. legnagyobb népsűrűségű ország?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">53. Melyik három ország területe hasonlít leginkább Magyaroszág méretéhez?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">54. Az emberek hányadrésze él Ázsiában? </button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">55. A szárazföldek mekkora hányadát foglalja el Oroszország?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">56. Az emberek hány százaléka fizet euroval?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">57. Hányszorosa a leggazdagabb ország egy főre jutó GDP-je a legszegényebb ország egy főre jutó GDP-jének?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">58. A világ össz-GDP-jének hány százalékát adja az USA?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">59. A világ össz-GDP-jének hány százalékát adja az euroövezet?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">60. Melyek azok az átlagnál gazdagabb országok, amelyek nem az európai vagy az amerikai kontinensen találhatóak?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">61. Milyen államformák léteznek Európában?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">62. Hányféle államforma létezik a világon?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">63. Hányféle fizetőeszközt használnak Európában az eurón kívül?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">64. Mely pénznemeket használják több országban is?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">65. Mely országok államformája egyedi?</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+    <button class="accordion">FELADAT</button>
+    <div class="panel">
+        <p>megoldas</p>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
