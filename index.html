@@ -319,7 +319,7 @@
     </div>
     <button class="accordion">53. Melyik három ország területe hasonlít leginkább Magyaroszág méretéhez?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT `orszag` FROM `orszagok` ORDER BY ABS(`terulet` - (SELECT `terulet` FROM `orszagok` WHERE `orszag` = 'Magyarország')) LIMIT 1, 3;</p>
     </div>
     <button class="accordion">54. Az emberek hányadrésze él Ázsiában? </button>
     <div class="panel">
