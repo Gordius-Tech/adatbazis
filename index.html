@@ -303,19 +303,19 @@
     </div>
     <button class="accordion">49. Melyik országban a legszegényebbek az emberek?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT `orszag`, `gdp` FROM `orszagok` WHERE `gdp`<>0 ORDER BY `gdp` ASC LIMIT 1;</p>
     </div>
     <button class="accordion">50. Melyik a 40. legkisebb területű ország? </button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT `orszag` FROM `orszagok` ORDER BY `terulet` ASC LIMIT 39,1;</p>
     </div>
     <button class="accordion">51. Melyik a 15. legkisebb népsűrűségű ország?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT `orszag`, `nepesseg`/`terulet` AS `nepsuruseg` FROM `orszagok` ORDER BY `nepsuruseg` ASC LIMIT 14, 1;</p>
     </div>
     <button class="accordion">52. Melyik a 61. legnagyobb népsűrűségű ország?</button>
     <div class="panel">
-        <p>megoldas</p>
+        SELECT `orszag`, `nepesseg`/`terulet` AS `nepsuruseg` FROM `orszagok` ORDER BY `nepsuruseg` DESC LIMIT 60, 1;
     </div>
     <button class="accordion">53. Melyik három ország területe hasonlít leginkább Magyaroszág méretéhez?</button>
     <div class="panel">
