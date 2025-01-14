@@ -51,3 +51,15 @@
 51. SELECT `orszag`, `nepesseg`/`terulet` AS `nepsuruseg` FROM `orszagok` ORDER BY `nepsuruseg` ASC LIMIT 14, 1;
 52. SELECT `orszag`, `nepesseg`/`terulet` AS `nepsuruseg` FROM `orszagok` ORDER BY `nepsuruseg` DESC LIMIT 60, 1;
 53. SELECT `orszag` FROM `orszagok` ORDER BY ABS(`terulet` - (SELECT `terulet` FROM `orszagok` WHERE `orszag` = 'Magyarország')) LIMIT 1, 3;
+54. 
+55. 
+56. 
+57. 
+58. 
+59. 
+60. SELECT `orszag`, `gdp` FROM `orszagok` WHERE `gdp` > (SELECT AVG(`gdp`) FROM `orszagok`) AND `foldr_hely` NOT LIKE '%Európa%' AND `foldr_hely` NOT LIKE '%Amerika%';
+61. SELECT DISTINCT `allamforma` FROM `orszagok` WHERE `foldr_hely` LIKE '%Európa%';
+62. SELECT COUNT(DISTINCT `allamforma`) AS `Államformák száma` FROM `orszagok`;
+63. SELECT COUNT(DISTINCT `penznem`) AS `nem euro fizetőeszköz száma` FROM `orszagok` WHERE `foldr_hely` LIKE '%Európa%' AND `penznem` != 'Euro';
+64. SELECT `penznem`, COUNT(DISTINCT `orszag`) AS `Országok száma` FROM `orszagok` GROUP BY `penznem` HAVING COUNT(DISTINCT `orszag`) > 1;
+65. SELECT `orszag`, `allamforma` FROM `orszagok` WHERE `allamforma` IN (SELECT `allamforma` FROM `orszagok` GROUP BY `allamforma` HAVING COUNT(`allamforma`) = 1);
