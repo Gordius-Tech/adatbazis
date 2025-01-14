@@ -347,27 +347,27 @@
     </div>
     <button class="accordion">60. Melyek azok az átlagnál gazdagabb országok, amelyek nem az európai vagy az amerikai kontinensen találhatóak?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT `orszag`, `gdp` FROM `orszagok` WHERE `gdp` > (SELECT AVG(`gdp`) FROM `orszagok`) AND `foldr_hely` NOT LIKE '%Európa%' AND `foldr_hely` NOT LIKE '%Amerika%';</p>
     </div>
     <button class="accordion">61. Milyen államformák léteznek Európában?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT DISTINCT `allamforma` FROM `orszagok` WHERE `foldr_hely` LIKE '%Európa%';</p>
     </div>
     <button class="accordion">62. Hányféle államforma létezik a világon?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT COUNT(DISTINCT `allamforma`) AS `Államformák száma` FROM `orszagok`;</p>
     </div>
     <button class="accordion">63. Hányféle fizetőeszközt használnak Európában az eurón kívül?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT COUNT(DISTINCT `penznem`) AS `nem euro fizetőeszköz száma` FROM `orszagok` WHERE `foldr_hely` LIKE '%Európa%' AND `penznem` != 'Euro';</p>
     </div>
     <button class="accordion">64. Mely pénznemeket használják több országban is?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT `penznem`, COUNT(DISTINCT `orszag`) AS `Országok száma` FROM `orszagok` GROUP BY `penznem` HAVING COUNT(DISTINCT `orszag`) > 1;</p>
     </div>
     <button class="accordion">65. Mely országok államformája egyedi?</button>
     <div class="panel">
-        <p>megoldas</p>
+        <p>SELECT `orszag`, `allamforma` FROM `orszagok` WHERE `allamforma` IN (SELECT `allamforma` FROM `orszagok` GROUP BY `allamforma` HAVING COUNT(`allamforma`) = 1);</p>
     </div>
     <button class="accordion">FELADAT</button>
     <div class="panel">
