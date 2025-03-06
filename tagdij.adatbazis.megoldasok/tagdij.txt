@@ -1,1 +1,20 @@
+1. Hogy hívják az egyes ügyfeleket? Jelenítse meg a nevüket ABC-sorrendben!
+SELECT `nev` FROM `ugyfel` ORDER BY `nev` ASC;
+2. Listázza ki a magyarországi ügyfeleket életkoruk szerint! Kezdje a legfiatalabbal!
+SELECT `nev`, `szulev`, YEAR(NOW())-`szulev` AS `kor` FROM `ugyfel` WHERE `orsz`='H' ORDER BY `kor` ASC;
+3. Adja meg a Pest megyei ügyfeleket! (Irányítószámuk 2-vel kezdődik.)
+SELECT `nev` FROM `ugyfel` WHERE `irszam` LIKE '2%';
+SELECT `nev` FROM `ugyfel` WHERE `irszam` BETWEEN 2000 AND 2999;
+4. Mennyi pénzt fizettek be összesen az ügyfelek?
+SELECT SUM(`osszeg`) AS `összbefizetés` FROM `befiz`;
+5. Mekkora összegű egy átlagos befizetés?
+SELECT AVG(`osszeg`) AS `összbefizetés` FROM `befiz`;
+6. Mennyi volt az eddigi legkisebb illetve legnagyobb befizetett összeg?
+SELECT MIN(`osszeg`) AS `legkisebb`, MAX(`osszeg`) AS `legnagyobb` FROM `befiz`;
+7. Hány darab befizetés szerepel a nyilvántartásban?
+SELECT COUNT(*) AS `befizetések száma` FROM `befiz`;
+8. Milyen összegeket, és mikor fizetett Török Bálint? 
+SELECT `befiz`.`osszeg`, `ugyfel`.`nev` FROM `befiz` INNER JOIN `ugyfel` ON `befiz`.`azon`= `ugyfel`.`azon` WHERE `ugyfel`.`nev`='Török Bálint';
+vagy SELECT `datum`, `nev`, `osszeg` FROM `ugyfel`, `befiz` WHERE `ugyfel`.`azon` = `befiz`.`azon` AND `nev`='Török Bálint';
+
 
