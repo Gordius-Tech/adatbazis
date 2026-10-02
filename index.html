@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adatbázis-tervezés | Tanulói jegyzet</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+
+        <div class="badge">
+            💾 INFORMATIKA • ADATBÁZISOK
+        </div>
+
+        <h1>Adatbázis-tervezés</h1>
+
+        <p>
+            Modern, könnyen tanulható jegyzet az adatbázisok
+            tervezéséről, a redundanciáról, az anomáliákról,
+            az ER-modellről és az SQL alapjairól.
+        </p>
+
+    </div>
+</header>
+
+
+<nav class="navbar">
+
+    <ul>
+        <li><a href="#alapok">Alapfogalmak</a></li>
+        <li><a href="#redundancia">Redundancia</a></li>
+        <li><a href="#anomaliak">Anomáliák</a></li>
+        <li><a href="#ermodel">ER-modell</a></li>
+        <li><a href="#kulcsok">Kulcsok</a></li>
+        <li><a href="#kapcsolatok">Kapcsolatok</a></li>
+        <li><a href="#sql">SQL</a></li>
+        <li><a href="#kerdesek">Önellenőrzés</a></li>
+    </ul>
+
+</nav>
+
+
+<main>
+
+
+    <!-- 01 ALAPFOGALMAK -->
+
+    <section id="alapok">
+
+        <div class="section-title">
+
+            <div class="number">01</div>
+
+            <h2>
+                Az adatbázis-tervezés alapjai
+            </h2>
+
+        </div>
+
+
+        <p>
+            Az adatbázis strukturáltan tárolt adatok összessége.
+            Az adatbázis-tervezés célja, hogy az adatokat logikus,
+            hatékony és könnyen kezelhető szerkezetben tároljuk.
+        </p>
+
+
+        <div class="card-grid">
+
+
+            <article class="card">
+
+                <div class="card-icon">🗄️</div>
+
+                <h3>Adatbázis</h3>
+
+                <p>
+                    Összetartozó adatok rendezett gyűjteménye.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">📊</div>
+
+                <h3>Tábla</h3>
+
+                <p>
+                    Az adatok sorokban és oszlopokban történő
+                    tárolására szolgál.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">📋</div>
+
+                <h3>Rekord</h3>
+
+                <p>
+                    A tábla egy teljes sora.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">🔤</div>
+
+                <h3>Mező</h3>
+
+                <p>
+                    A tábla egy oszlopa, amely egy tulajdonságot tárol.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 02 REDUNDANCIA -->
+
+    <section id="redundancia">
+
+        <div class="section-title">
+
+            <div class="number">02</div>
+
+            <h2>Redundancia</h2>
+
+        </div>
+
+
+        <p>
+            Redundanciáról akkor beszélünk, amikor ugyanazt az
+            információt szükségtelenül több helyen tároljuk.
+        </p>
+
+
+        <div class="warning">
+
+            <strong>⚠️ Példa</strong>
+
+            <p>
+                Ha egy osztályfőnök neve minden tanuló rekordjában
+                külön szerepel, akkor ugyanazt az adatot többször
+                tároljuk.
+            </p>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Tanuló</th>
+                        <th>Osztály</th>
+                        <th>Osztályfőnök</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Kovács Péter</td>
+                        <td>9.A</td>
+                        <td>Nagy Béla</td>
+                    </tr>
+
+                    <tr>
+                        <td>Kiss Anna</td>
+                        <td>9.A</td>
+                        <td>Nagy Béla</td>
+                    </tr>
+
+                    <tr>
+                        <td>Szabó Péter</td>
+                        <td>9.A</td>
+                        <td>Nagy Béla</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="success">
+
+            <strong>💡 Megoldás</strong>
+
+            <p>
+                Az adatokat megfelelően különálló táblákba szervezzük.
+                Ezt a folyamatot normalizálásnak nevezzük.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 03 ANOMÁLIÁK -->
+
+    <section id="anomaliak">
+
+        <div class="section-title">
+
+            <div class="number">03</div>
+
+            <h2>Anomáliák</h2>
+
+        </div>
+
+
+        <p>
+            Az anomália az adatbázis nem megfelelő szerkezete miatt
+            kialakuló probléma.
+        </p>
+
+
+        <div class="card-grid">
+
+
+            <article class="card">
+
+                <div class="card-icon">➕</div>
+
+                <h3>Beszúrási anomália</h3>
+
+                <p>
+                    Egy új adat csak egy másik adat rögzítésével
+                    együtt vehető fel.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">✏️</div>
+
+                <h3>Módosítási anomália</h3>
+
+                <p>
+                    Ugyanazt az adatot több rekordban kell módosítani.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">🗑️</div>
+
+                <h3>Törlési anomália</h3>
+
+                <p>
+                    Egy rekord törlésével más, fontos információ
+                    is elveszhet.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 04 NORMALIZÁLÁS -->
+
+    <section>
+
+        <div class="section-title">
+
+            <div class="number">04</div>
+
+            <h2>Redundancia csökkentése</h2>
+
+        </div>
+
+
+        <p>
+            A redundancia csökkentésének egyik legfontosabb eszköze
+            a <strong>normalizálás</strong>.
+        </p>
+
+
+        <div class="highlight">
+
+            <strong>🎯 A normalizálás célja:</strong>
+
+            <ul>
+
+                <li>felesleges adatismétlés csökkentése</li>
+
+                <li>adatellentmondások elkerülése</li>
+
+                <li>anomáliák megszüntetése</li>
+
+                <li>az adatbázis könnyebb karbantartása</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 05 ER MODELL -->
+
+    <section id="ermodel">
+
+        <div class="section-title">
+
+            <div class="number">05</div>
+
+            <h2>ER-modell</h2>
+
+        </div>
+
+
+        <p>
+            Az ER-modell az adatbázis logikai felépítésének
+            megtervezésére szolgáló modell.
+        </p>
+
+
+        <div class="card-grid">
+
+
+            <article class="card">
+
+                <div class="card-icon">🔷</div>
+
+                <h3>Egyed</h3>
+
+                <p>
+                    Olyan objektum, amelyről adatokat tárolunk.
+                </p>
+
+                <p>
+                    <strong>Példa:</strong>
+                    TANULÓ, TANÁR, OSZTÁLY
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">🔹</div>
+
+                <h3>Tulajdonság</h3>
+
+                <p>
+                    Az egyed valamely jellemzője.
+                </p>
+
+                <p>
+                    <strong>Példa:</strong>
+                    név, életkor, cím
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">🔗</div>
+
+                <h3>Kapcsolat</h3>
+
+                <p>
+                    Megmutatja, hogy az egyedek hogyan kapcsolódnak
+                    egymáshoz.
+                </p>
+
+            </article>
+
+
+        </div>
+
+
+        <div class="highlight">
+
+            <strong>ER-jelölések</strong>
+
+            <p>▭ Téglalap → egyed</p>
+
+            <p>◯ Ovális → tulajdonság</p>
+
+            <p>◇ Rombusz → kapcsolat</p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 06 KULCSOK -->
+
+    <section id="kulcsok">
+
+        <div class="section-title">
+
+            <div class="number">06</div>
+
+            <h2>Elsődleges és idegen kulcs</h2>
+
+        </div>
+
+
+        <div class="key-box">
+
+
+            <article class="key pk">
+
+                <strong>🔑 PK – Primary Key</strong>
+
+                <p>
+                    Az elsődleges kulcs egyértelműen azonosítja
+                    a tábla rekordjait.
+                </p>
+
+                <p>
+                    Egyedi és nem lehet NULL értékű.
+                </p>
+
+            </article>
+
+
+            <article class="key fk">
+
+                <strong>🔗 FK – Foreign Key</strong>
+
+                <p>
+                    Az idegen kulcs egy másik tábla elsődleges
+                    kulcsára hivatkozik.
+                </p>
+
+            </article>
+
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>TanuloID</th>
+                        <th>Név</th>
+                        <th>OsztalyID</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Kovács Péter</td>
+                        <td>10</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Kiss Anna</td>
+                        <td>10</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <strong>💡 Megjegyzés</strong>
+
+            <p>
+                A <strong>TanuloID</strong> lehet PK, míg az
+                <strong>OsztalyID</strong> FK, ha az OSZTÁLY táblára
+                hivatkozik.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 07 KAPCSOLATOK -->
+
+    <section id="kapcsolatok">
+
+        <div class="section-title">
+
+            <div class="number">07</div>
+
+            <h2>Kapcsolattípusok</h2>
+
+        </div>
+
+
+        <div class="relationship">
+
+            <div class="entity">
+
+                <strong>OSZTÁLY</strong>
+
+                <span>Egy osztály</span>
+
+            </div>
+
+
+            <div class="arrow">
+                1 → N
+            </div>
+
+
+            <div class="entity">
+
+                <strong>TANULÓ</strong>
+
+                <span>Több tanuló</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="card-grid">
+
+
+            <article class="card">
+
+                <h3>1 : 1</h3>
+
+                <p>
+                    Egy rekordhoz pontosan egy másik rekord tartozik.
+                </p>
+
+                <strong>Példa:</strong>
+
+                <p>Személy ↔ Útlevél</p>
+
+            </article>
+
+
+            <article class="card">
+
+                <h3>1 : N</h3>
+
+                <p>
+                    Egy rekordhoz több másik rekord tartozhat.
+                </p>
+
+                <strong>Példa:</strong>
+
+                <p>Osztály → Tanulók</p>
+
+            </article>
+
+
+            <article class="card">
+
+                <h3>N : M</h3>
+
+                <p>
+                    Mindkét oldalon több rekord kapcsolódhat.
+                </p>
+
+                <strong>Példa:</strong>
+
+                <p>Tanuló ↔ Tantárgy</p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 08 SQL -->
+
+    <section id="sql">
+
+        <div class="section-title">
+
+            <div class="number">08</div>
+
+            <h2>SQL – CREATE utasítás</h2>
+
+        </div>
+
+
+        <p>
+            A <strong>CREATE</strong> utasítással adatbázisokat
+            és táblákat hozhatunk létre.
+        </p>
+
+
+        <h3>Adatbázis létrehozása</h3>
+
+
+        <pre><code><span class="keyword">CREATE DATABASE</span> iskola;</code></pre>
+
+
+        <h3>Adatbázis kiválasztása</h3>
+
+
+        <pre><code><span class="keyword">USE</span> iskola;</code></pre>
+
+
+        <h3>Tábla létrehozása</h3>
+
+
+        <pre><code><span class="keyword">CREATE TABLE</span> tanulo (
+    TanuloID <span class="keyword">INT PRIMARY KEY</span>,
+    Nev <span class="keyword">VARCHAR</span>(100),
+    Osztaly <span class="keyword">VARCHAR</span>(10),
+    Eletkor <span class="keyword">INT</span>
+);</code></pre>
+
+
+        <div class="highlight">
+
+            <strong>🧠 Mit jelent?</strong>
+
+            <p>
+                <strong>CREATE TABLE</strong> → tábla létrehozása
+            </p>
+
+            <p>
+                <strong>PRIMARY KEY</strong> → elsődleges kulcs
+            </p>
+
+            <p>
+                <strong>INT</strong> → egész szám
+            </p>
+
+            <p>
+                <strong>VARCHAR</strong> → szöveges adat
+            </p>
+
+        </div>
+
+
+        <h3>Idegen kulcs létrehozása</h3>
+
+
+        <pre><code><span class="keyword">CREATE TABLE</span> tanulo (
+    TanuloID <span class="keyword">INT PRIMARY KEY</span>,
+    Nev <span class="keyword">VARCHAR</span>(100),
+    OsztalyID <span class="keyword">INT</span>,
+
+    <span class="keyword">FOREIGN KEY</span> (OsztalyID)
+        <span class="keyword">REFERENCES</span> osztaly(OsztalyID)
+);</code></pre>
+
+    </section>
+
+
+
+    <!-- 09 ÖSSZEFOGLALÓ -->
+
+    <section>
+
+        <div class="section-title">
+
+            <div class="number">09</div>
+
+            <h2>Gyors összefoglaló</h2>
+
+        </div>
+
+
+        <div class="memory">
+
+            <div>📌 Mező = oszlop</div>
+
+            <div>📌 Rekord = sor</div>
+
+            <div>🔑 PK = saját azonosító</div>
+
+            <div>🔗 FK = másik tábla kulcsa</div>
+
+            <div>⚠️ Redundancia = felesleges ismétlés</div>
+
+            <div>🛠️ Normalizálás = redundancia csökkentése</div>
+
+            <div>1️⃣ 1:N = egyhez több</div>
+
+            <div>🔢 N:M = többhöz több</div>
+
+            <div>💾 CREATE DATABASE = adatbázis</div>
+
+            <div>📊 CREATE TABLE = tábla</div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 10 ÖNELLENŐRZÉS -->
+
+    <section id="kerdesek">
+
+        <div class="section-title">
+
+            <div class="number">10</div>
+
+            <h2>Önellenőrző kérdések</h2>
+
+        </div>
+
+
+        <div class="questions">
+
+
+            <div class="question">
+                Mit nevezünk adatbázisnak?
+            </div>
+
+
+            <div class="question">
+                Mi a különbség a mező és a rekord között?
+            </div>
+
+
+            <div class="question">
+                Mit jelent a redundancia?
+            </div>
+
+
+            <div class="question">
+                Miért problémás a túlzott redundancia?
+            </div>
+
+
+            <div class="question">
+                Sorold fel az anomáliák három fő típusát!
+            </div>
+
+
+            <div class="question">
+                Mi a beszúrási anomália?
+            </div>
+
+
+            <div class="question">
+                Mi a módosítási anomália?
+            </div>
+
+
+            <div class="question">
+                Mi a törlési anomália?
+            </div>
+
+
+            <div class="question">
+                Mi az ER-modell célja?
+            </div>
+
+
+            <div class="question">
+                Mit jelent az elsődleges kulcs?
+            </div>
+
+
+            <div class="question">
+                Mi az idegen kulcs?
+            </div>
+
+
+            <div class="question">
+                Mit jelent az 1:N kapcsolat?
+            </div>
+
+
+            <div class="question">
+                Mondj példát N:M kapcsolatra!
+            </div>
+
+
+            <div class="question">
+                Mire használjuk a CREATE DATABASE utasítást?
+            </div>
+
+
+            <div class="question">
+                Mire használjuk a CREATE TABLE utasítást?
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <strong>ADATBÁZIS-TERVEZÉS</strong>
+
+    <p>
+        Informatika • Adatbázisok • SQL
+    </p>
+
+</footer>
+
+
+</body>
+</html>
